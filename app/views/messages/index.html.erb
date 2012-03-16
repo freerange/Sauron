@@ -1,5 +1,8 @@
 <ul>
   <% @messages.each do |message| %>
-    <li><%= message.subject %></li>
+    <li class="message">
+      <span class="date"><%= message.date.strftime("%Y-%m-%D %H:%M:%S") %></span>
+      <span class="subject"><%= message.subject %></span>
+    </li>
   <% end %>
 </ul>
