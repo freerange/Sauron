@@ -1,4 +1,5 @@
 require 'mail'
+require 'file_based_message_store'
 
 class MessageRepository
   class Record < ActiveRecord::Base

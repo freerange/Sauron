@@ -1,4 +1,5 @@
 require Rails.root + 'test' + 'fakes' + 'fake_gmail'
+require 'message_importer'
 
 After do
   FileUtils.rm_rf 'data/test'

@@ -1,4 +1,5 @@
 require 'message_repository'
+require 'message_importer'
 
 class AccountMessageImporter
   class << self
