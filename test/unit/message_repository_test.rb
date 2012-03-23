@@ -1,4 +1,5 @@
-require 'test_helper'
+require 'test_helper_without_rails'
+require 'message_repository'
 
 class MessageRepositoryTest < ActiveSupport::TestCase
   test 'uses MessageRepository::Record by default' do

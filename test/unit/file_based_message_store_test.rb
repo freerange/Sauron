@@ -1,5 +1,6 @@
-require 'test_helper'
+require 'test_helper_without_rails'
 require 'fileutils'
+require 'file_based_message_store'
 
 class FileBasedMessageStoreTest < ActiveSupport::TestCase
   TEST_ROOT_PATH = File.expand_path('tmp/test/data')

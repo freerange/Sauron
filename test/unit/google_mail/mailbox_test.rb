@@ -1,4 +1,5 @@
-require 'test_helper'
+require 'test_helper_without_rails'
+require 'google_mail/mailbox'
 
 module GoogleMail
   class Mailbox::AuthenticatedConnectionTest < ActiveSupport::TestCase

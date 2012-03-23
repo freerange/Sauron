@@ -1,4 +1,5 @@
-require 'test_helper'
+require 'test_helper_without_rails'
+require 'message_importer'
 
 class MessageImporterTest < ActiveSupport::TestCase
   test 'imports messages available in the mailbox' do

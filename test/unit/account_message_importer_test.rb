@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'test_helper_without_rails'
 require 'account_message_importer'
 
 class AccountMessageImporterTest < ActiveSupport::TestCase
