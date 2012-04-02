@@ -1,4 +1,5 @@
-require 'test_helper'
+require 'test_helper_without_rails'
+require 'google_mail/imap_cache'
 
 module GoogleMail
   class ImapCacheTest < ActiveSupport::TestCase

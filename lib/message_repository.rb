@@ -1,4 +1,6 @@
 require 'mail'
+require 'cache_backed_message_store'
+require 'active_record'
 
 class MessageRepository
   class Record < ActiveRecord::Base
