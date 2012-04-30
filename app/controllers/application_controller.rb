@@ -5,9 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  attr_reader :current_username
+  helper_method :current_username
+
   def protect_messages_from_spies
     authenticate_or_request_with_http_basic('Sauron') do |username, password|
-      username == 'admin' && password == ENV['HTTP_PASSWORD']
+      if Team.new.has_member?(username) && password == ENV['HTTP_PASSWORD']
+        @current_username = username
+      end
     end
   end
 end

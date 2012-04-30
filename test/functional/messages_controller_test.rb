@@ -2,12 +2,22 @@ require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   setup do
+    ENV["TEAM"] = "alice@example.com"
     ENV["HTTP_PASSWORD"] = "password"
-    @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("admin:password")
+    @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("alice@example.com:password")
+  end
+
+  test "#index indicates which messages were and were not received by the current user" do
+    received = stub_everything("received", subject: "received", received_by?: true)
+    not_received = stub_everything("not-received", subject: "not-received", received_by?: false)
+    MessageRepository.stubs(:messages).with().returns([received, not_received])
+    get :index
+    assert_select ".message.received .subject", text: "received"
+    assert_select ".message.not-received .subject", text: "not-received"
   end
 
   test "#index finds messages via repository" do
-    messages = [Mail.new("FROM: George\nDate: 2012-01-01 12:00:00"), Mail.new("FROM: Bob\nDate: 2012-01-01 12:00:00")]
+    messages = [stub_everything("message-1"), stub_everything("message-2")]
     MessageRepository.stubs(:messages).with().returns(messages)
     get :index
     assert_equal messages, assigns[:messages]
